@@ -104,7 +104,7 @@ console.log(userDetails);
     <section className='flex flex-col items-center gap-y-3 my-8'>
         <button className='bg-blue text-white px-6 md:px-12 py-2 rounded-md' type='submit' >Sign in</button>
       <Link to={""} className='text-md underline'>forget password?</Link>
-      <div  className=''>Dont have a account? 
+      <div  className=''>don't have an account? 
         <Link to={"/register"} className='text-blue mx-2 underline'>Sign up</Link>
       </div>
     </section>
