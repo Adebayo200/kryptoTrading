@@ -1,0 +1,76 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "first_name": "Adehimself",
+      "last_name": "jahblez",
+      "username": "adebest",
+      "password": 12345,
+      "email": "ade@gmail.com"
+    },
+    {
+      "id": 2,
+      "first_name": "Chris",
+      "last_name": "Abel",
+      "username": "ChrisLol",
+      "password": 2344,
+      "email": "chris@gmail.com"
+    },
+    {
+      "id": 3,
+      "first_name": "susan",
+      "last_name": "jennifer",
+      "username": "sussy",
+      "password": 3456,
+      "email": "sussy@gmail.com"
+    },
+    {
+      "id": 4,
+      "first_name": "ade",
+      "last_name": "bfrd",
+      "email": "bfrd",
+      "username": "bfrd",
+      "pwd": "12345678"
+    },
+    {
+      "id": 5,
+      "first_name": "ade",
+      "last_name": "bfrd",
+      "email": "bfrd",
+      "username": "bfrd",
+      "pwd": "12345678"
+    },
+    {
+      "id": 5,
+      "first_name": "johnson",
+      "last_name": "chris",
+      "email": "chris",
+      "username": "chris",
+      "pwd": "12345678"
+    },
+    {
+      "id": 5,
+      "first_name": "jake",
+      "last_name": "chris",
+      "email": "chris",
+      "username": "chris",
+      "pwd": "12345"
+    },
+    {
+      "id": 5,
+      "first_name": "jake",
+      "last_name": "chris",
+      "email": "chris",
+      "username": "chris",
+      "pwd": "12345"
+    },
+    {
+      "id": 5,
+      "first_name": "bro",
+      "last_name": "sis",
+      "email": "sis",
+      "username": "sis",
+      "pwd": "123456"
+    }
+  ]
+}
