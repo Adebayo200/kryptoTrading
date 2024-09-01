@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
     const inputFormClass = "border-2 border-blue w-full md:h-10 h-8 px-2 mt-3 "
     const inputFormClassEmail ="border-[1px] border-blue w-full md:h-10 h-8 px-2 mt-3"
-    const labelFromClass = "text-lg" 
+    const labelFromClass = "lg:text-lg md:text-md text-sm" 
     const eachFromSectionClass ="mx-auto w-full my-2"
     const eachFromSectionClassEmail ="mx-auto w-[90%] my-2"
 
