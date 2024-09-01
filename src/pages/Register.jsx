@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 
-    const inputFormClass = "border-2 border-blue w-full h-16 px-2 mt-3 text-xl"
-    const inputFormClassEmail ="border-2 border-blue w-full h-16 px-2 mt-3 text-xl"
-    const labelFromClass = "text-lg font-semibold" 
+    const inputFormClass = "border-[1px] border-blue w-full h-16 px-2 mt-3 text-xl"
+    const inputFormClassEmail ="border-[1px] border-blue w-full h-16 px-2 mt-3 text-xl"
+    const labelFromClass = "text-lg" 
     const eachFromSectionClass ="mx-auto w-full my-2"
     const eachFromSectionClassEmail ="mx-auto w-[90%] my-2"
 
@@ -63,7 +63,7 @@ console.log(userDetails);
 
   <header className='flex flex-col items-center gap-y-2'>
   <h1 className='text-blue font-sarpanch font-bold text-[1.7rem]'>KRYPTOTRADE</h1>
-  <p className='font-semibold'>Create Account</p>
+  <p className=''>Create Account</p>
   </header>
 
 
@@ -149,8 +149,8 @@ console.log(userDetails);
     </div>
 
     <section className='flex flex-col items-center gap-y-3 my-8'>
-        <button className='bg-blue text-white font-semibold px-6 md:px-12 py-2 rounded-md' type='submit' >Sign up</button>
-      <div  className='font-semibold'>Already have an account? 
+        <button className='bg-blue text-white  px-6 md:px-12 py-2 rounded-md' type='submit' >Sign up</button>
+      <div  className=''>Already have an account? 
         <Link to={"/login"} className='text-blue mx-2 underline'>Sign in</Link>
       </div>
     </section>
