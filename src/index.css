@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+
+
+
+.slick-slider button::before {
+    left: 10px;
+    z-index: 1;
+    color: blue;
+}
+.slick-slider button::after {
+    left: 10px;
+    z-index: 1;
+    color: blue;
+
+}
+
+/* .slick-slider div{
+    margin:  0px 10px;
+    background-color: red;
+} */
+
+/* .slick-slide{
+    margin: 10px;
+} */
+
+.slick-slide {
+    padding: 0 10px;
+    /* background-color: red; */
+   
+    /* Adjust as needed */
+}
+
+/* Ensure the track container respects spacing */
+.slick-track {
+    display: flex;
+}

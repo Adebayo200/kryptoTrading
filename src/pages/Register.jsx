@@ -1,60 +1,34 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { UserContext } from '../Context/UserContext'
+import { useNavigate } from 'react-router-dom'
 
 
-    const inputFormClass = "border-[1px] border-blue w-full md:h-10 h-8 px-2 mt-3"
-    const inputFormClassEmail ="border-[1px] border-blue w-full md:h-10 h-8 px-2 mt-3"
+    const inputFormClass = "border-[1px] border-blue w-full md:h-10 h-10 px-2 mt-3"
+    const inputFormClassEmail ="border-[1px] border-blue w-full md:h-10 h-10 px-2 mt-3"
     const labelFromClass = "lg:text-lg md:text-md text-sm" 
     const eachFromSectionClass ="mx-auto w-full my-2"
     const eachFromSectionClassEmail ="mx-auto w-[90%] my-[2px]"
 
 const Register = () => {
-    const [userDetails,setUserDetails] = useState({
-        firstName:"",
-        lastName:"",
-        password:"",
-        email:"",
-        username:""
-    })
 
+ const {userDetails,setUserDetails,postData, userCreated,setUserCreated} = useContext(UserContext)
+   const navigate = useNavigate()
 
+ useEffect(()=>{
 
-const postData = async (e) => {
-    e.preventDefault()
-  try {
-    const response = await fetch('https://eskanor.com.ng/Api/Api/signup.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: JSON.stringify({
-        firstName:userDetails.firstName,
-        lastName:userDetails.lastName,
-        email:userDetails.lastName,
-        userName:userDetails.lastName,
-        pwd:userDetails.password,
-    }),
-    });
-
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-
-    const data = await response.json();
-    console.log('Success:', data);
-  } catch (error) {
-    console.error('Error:', error);
+  if (userCreated) {
+    navigate("/login")
+    setUserCreated(false)
   }
-};
+
+ },[userCreated])
 
 
-useEffect(()=>{
-console.log(userDetails);
-},[userDetails])
 
   return (
     <div className='xl:flex'>
-<div className='text-white h-screen xl:flex xl:flex-col xl:items-center xl:justify-center hidden xl:block w-[50%] bg-blue'>
+<div className='text-white min-h-screen xl:flex xl:flex-col xl:items-center xl:justify-center hidden xl:block w-[50%] bg-blue'>
     <h1 className='font-bold text-[2.5rem] font-sarpanch'>KRYPTOTRADE</h1>
     <p className='w-[70%] '>"Join thousands of investors who trust us to simplify and secure their crypto journey."</p>
 </div>
@@ -149,7 +123,7 @@ console.log(userDetails);
     </div>
 
     <section className='flex flex-col items-center gap-y-3 my-8'>
-        <button className='bg-blue text-white  px-6 md:px-12 py-2 rounded-md' type='submit' >Sign up</button>
+        <button className='bg-blue focus:opacity-60 text-white  px-6 md:px-12 py-2 rounded-md hover:opacity-70 focus:opacity-70' type='submit' >Sign up</button>
       <div  className=''>already have an account? 
         <Link to={"/login"} className='text-blue mx-2 underline'>Sign in</Link>
       </div>

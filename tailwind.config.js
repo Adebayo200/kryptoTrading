@@ -14,6 +14,7 @@ module.exports = {
         white:"#FFFFFF",
         yellow:"#F7931A",
         black:"#000000",
+        lightBlue:"#C2C7FF",
         customGray: {
           light: '#F3F4F6',
           DEFAULT: '#D1D5DB',
@@ -26,19 +27,11 @@ module.exports = {
       'xxs':'330px',  
       'xs':'400px',
       'sm': '640px',
-      // => @media (min-width: 640px) { ... }
-
       'md': '768px',
-      // => @media (min-width: 768px) { ... }
-
-      'lg': '1024px',
-      // => @media (min-width: 1024px) { ... }
-
-      'xl': '1280px',
-      // => @media (min-width: 1280px) { ... }
-
-      '2xl': '1536px',
-      // => @media (min-width: 1536px) { ... }
+      'lg': '900px',
+      "xl": '1024px',
+      "2xl": '1280px',
+  
     }
   },
   plugins: [],
