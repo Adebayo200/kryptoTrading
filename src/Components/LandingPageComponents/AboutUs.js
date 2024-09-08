@@ -46,7 +46,7 @@ return (
             <p className='font-bold bg-blue px-6 py-6 text-white' style={{borderRadius:"15px"}}>
                 {item.svg}
                 </p>
-            <p className='text-center md:font-bold xl:font-semibold xl:text-[0.8rem]'>{item.title}</p>
+            <p className='text-center md:font-bold xl:font-semibold xl:text-[0.8rem] text-[0.85rem]'>{item.title}</p>
         </article>
     </section>
 )
