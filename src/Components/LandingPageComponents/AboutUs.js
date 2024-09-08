@@ -41,8 +41,8 @@ const BoxesForAboutUs = ()=>{
 
 
 return (
-    <section key={index} className='bg-lightBlue border-md rounded-xl w-full flex justify-center items-center xs:h-[250px] h-[220px] xl:h-[225px] xl:w-[43%] sm:w-[47%]'>
-        <article className=' w-[40%] h-[40%] rounded-xl flex justify-center items-center flex-col'>
+    <section key={index} className='bg-lightBlue border-md rounded-xl w-287 flex justify-center items-center xs:h-[250px] h-[295px] xl:h-[225px] xl:w-[43%] sm:w-[47%] '>
+        <article className=' w-[40%] h-[40%] rounded-xl flex justify-center items-center flex-col gap-y-4'>
             <p className='font-bold bg-blue px-6 py-6 text-white' style={{borderRadius:"15px"}}>
                 {item.svg}
                 </p>
