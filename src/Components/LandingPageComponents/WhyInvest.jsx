@@ -23,7 +23,7 @@ return (
         {/* image and points */}
         <section className='mt-10 lg:w-[55%]'>
           
-<img src="/images/rectangle-9.png" alt="rectangle" className='w-full h-[350px] sm:h-[608px]' />
+<img src="/images/Rectangle9.jpg" alt="Rectangle" className='w-full h-[350px] sm:h-[608px]' />
           
 <div className='mx-4 sm:mx-12 lg:mx-0 sm:flex  '>
 {whyPoints.map((item,index)=>{
