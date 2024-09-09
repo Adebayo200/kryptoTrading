@@ -12,7 +12,7 @@ const HeroSection = () => {
         <LoginSignUpBtnsForHeroTablet/>
         <CurrenciesImages/>
         </section>
-        <section className='xl:w-[63%] xl:h-[90vh]  xl:flex xl:justify-end'>
+        <section className='xl:w-[63%] xl:h-[90vh] xl:max-h-[600px]  xl:flex xl:justify-end'>
       <img src="/images/Rectangle2.jpg" alt="image" 
       className='xl:w-[95%] object-cover' />
         </section>
@@ -43,7 +43,9 @@ const LoginSignUpBtnsForHeroMobile = ()=>{
     )
 }
 const LoginSignUpBtnsForHeroTablet = ()=>{
+
      const navigate = useNavigate()
+     
     return (
              <section className='flex justify-center gap-x-20 xl:gap-x-4 my-8 xl:justify-start hidden sm:flex' >
             <button className='bg-blue font-semibold text-white border-[1px] rounded-xl xs:px-10 px-7 xs:py-3 py-2 xl:font-normal  xl:min-w-[90px] xl:py-2'
@@ -63,7 +65,7 @@ const LoginSignUpBtnsForHeroTablet = ()=>{
 const CurrenciesImages = ()=>{
 
     return(
-        <div className='xl:block hidden relative xl:h-[50%] xl: '>
+        <div className='xl:block hidden relative xl:h-[50%] xl:'>
           
            <img src="/images/btc.png" alt="btc" className='absolute top-[35%] left-[5%] xl:left-[12%] w-[40%] xl:w-[30%] z-10 rotate-[45deg]' /> 
            <img src="/images/eth.png" alt="eth"  className='absolute top-[15%] xl:top-[10%] left-[30%] w-[37%] xl:w-[27%]'/> 

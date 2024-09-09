@@ -41,12 +41,12 @@ const BoxesForAboutUs = ()=>{
 
 
 return (
-    <section key={index} className='bg-lightBlue border-md rounded-xl w-287 flex justify-center items-center xs:h-[250px] h-[295px] xl:h-[225px] xl:w-[43%] sm:w-[47%] '>
-        <article className=' w-[40%] h-[40%] rounded-xl flex justify-center items-center flex-col gap-y-4'>
-            <p className='font-bold bg-blue px-6 py-6 text-white' style={{borderRadius:"15px"}}>
+    <section key={index} className='bg-lightBlue border-md rounded-xl w-[287px] mx-auto flex justify-center items-center xs:h-[250px] h-[295px] xl:h-[225px] xl:w-[43%] sm:w-[270px] lg:max-h-[200px]'>
+        <article className=' w-[60%] h-[40%]  rounded-xl flex justify-center items-center flex-col gap-y-4'>
+            <p className='font-bold bg-blue px-6 py-6 text-white lg:max-h-[68px] lg:max-w-[66px]' style={{borderRadius:"15px"}}>
                 {item.svg}
                 </p>
-            <p className='text-center md:font-bold xl:font-semibold xl:text-[0.8rem] text-[0.85rem]'>{item.title}</p>
+            <p className='text-center md:font-bold xl:font-semibold xl:text-[0.7rem]  lg:text-[0.7rem] text-[0.85rem]'>{item.title}</p>
         </article>
     </section>
 )

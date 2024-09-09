@@ -5,6 +5,7 @@ import HeroSection from '../Components/LandingPageComponents/HeroSection'
 import AboutUs from '../Components/LandingPageComponents/AboutUs'
 import WhatWeDo from '../Components/LandingPageComponents/WhatWeDo'
 import { UserContext } from '../Context/UserContext'
+import WhyInvest from '../Components/LandingPageComponents/WhyInvest'
 
 
 const Home = () => {
@@ -32,6 +33,7 @@ const Home = () => {
    <HeroSection/>
    <AboutUs/>
    <WhatWeDo/>
+   <WhyInvest/>
     </div>
   )
 }

@@ -8,11 +8,11 @@ const WhatWeDo = () => {
     <div className='px-8'>
         <header className='space-y-8 mb-10'>
             <h1 className='text-center font-semibold'>WHAT WE DO</h1>
-            <p className='text-center'>we give the best practices</p>
+            <p className='text-center'>we give the best services</p>
         </header>
 
       <PointsForMobile/>
-      <PointsForTablet/>
+      <PointsForTablet/>     
     </div>
   )
 }
