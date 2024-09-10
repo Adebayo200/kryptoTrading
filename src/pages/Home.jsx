@@ -6,6 +6,10 @@ import AboutUs from '../Components/LandingPageComponents/AboutUs'
 import WhatWeDo from '../Components/LandingPageComponents/WhatWeDo'
 import { UserContext } from '../Context/UserContext'
 import WhyInvest from '../Components/LandingPageComponents/WhyInvest'
+import InvestmentPlans from '../Components/LandingPageComponents/InvestmentPlans'
+import MinningPlans from '../Components/LandingPageComponents/InvestmentPlans'
+import MiningPlans from '../Components/LandingPageComponents/MinningPlans'
+import OurMetrics from '../Components/LandingPageComponents/OurMetrics'
 
 
 const Home = () => {
@@ -34,6 +38,9 @@ const Home = () => {
    <AboutUs/>
    <WhatWeDo/>
    <WhyInvest/>
+   <InvestmentPlans/>
+  <MiningPlans/>
+  <OurMetrics/>
     </div>
   )
 }
