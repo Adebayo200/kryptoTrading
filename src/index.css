@@ -4,7 +4,9 @@
 
 
 
-
+html{
+    scroll-behavior: smooth;
+}
 
 
 .slick-slider button::before {
@@ -38,4 +40,113 @@
 /* Ensure the track container respects spacing */
 .slick-track {
     display: flex;
+}
+
+.background-image{
+    background-image: url(/public/images/dashboard.jpg);
+    /* background-color: red; */
+    background-size:cover;
+    border-radius: 10px;
+    background-position-y: center;
+    background-position-x: center;
+    background-repeat: no-repeat;
+    height: 11rem;    
+}
+
+.support{
+    padding: 10px;
+    border-radius: 10px;
+    left: 10px;
+    position: fixed;
+    bottom: 10px;
+    transition: width 1s ease;
+    
+}
+.zoomInOut{
+    animation-name: zoom;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+}
+@keyframes zoom {
+0% {
+        transform: scale(1);
+        
+    }
+
+    50% {
+        transform: scale(1.2);
+      
+    }
+
+    100% {
+        transform: scale(1);
+      
+    }
+}
+
+
+    .addWidth{
+        animation-name: widthName;
+        animation-duration: 0.2s;
+        animation-timing-function:linear;
+        animation-fill-mode: both;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+    }
+    
+    @keyframes widthName {
+        0%{
+            
+            width: 50px;
+        }
+        100%{
+            width: 100px;
+        }
+    }
+    
+    .removeWidth{
+        /* animation-name: removeWidthName; */
+        cursor: pointer;
+        animation-duration: 1;
+        animation-timing-function:linear;
+        /* animation-fill-mode: both; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    
+    @keyframes removeWidthName {
+        0%{
+            
+            width: 100px;
+           
+        }
+        100%{
+            width: 50px;
+        }
+    }
+    
+
+    /* Navbar.css */
+.slide-navbar-container {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.5s ease-in-out;
+}
+
+/* Slide down effect */
+.slide-down {
+  height: 50vh; /* Full viewport height for mobile */
+ 
+}
+
+/* Slide up effect */
+.slide-up {
+  height: 0;
 }

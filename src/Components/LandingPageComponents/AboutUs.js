@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
+import { DataControlContext } from '../../Context/DataControlContext'
 
 const AboutUs = () => {
+    const {height,setHeight,investmentData,loading,aboutDiv } = useContext(DataControlContext)
+    const aboutUs = useRef(null)
+
+
+    useEffect(()=>{
+    // setHeight({...height,about:aboutUs.current.getBoundingClientRect().top + window.screenY})
+    // console.log(height);
+    
+    },[investmentData,loading])
   return (
-    <div className='px-8 xl:py-12'>
+    <div className='px-8 xl:py-12' ref={ aboutDiv }>
       <h1 className='text-center xl:text-start font-semibold xl:font-semibold text-lg'>ABOUT US</h1>
 
       <section className='xl:flex'>
@@ -19,7 +29,7 @@ export default AboutUs
 const AboutUsArticle = ()=>{
 
     return (
-          <article className='xl:w-[55%] xl:flex xl:flex-col justify-between xl: xs:text-[1.1rem] xl:pt-8 '>
+          <article id='about' className='xl:w-[55%] xl:flex xl:flex-col justify-between xl: xs:text-[1.1rem] xl:pt-8 '>
             <p>
 <span className='text-blue font-semibold'>Kryptotrade</span> is a cutting-edge cryptocurrency investment platform designed to make digital asset trading simple, secure, and accessible to everyone. Whether you're a seasoned investor or just starting your crypto journey, our platform offers a seamless experience with a wide range of cryptocurrencies and intuitive tools to help you navigate the market with confidence.
 <br />

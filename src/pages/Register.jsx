@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { UserContext } from '../Context/UserContext'
 import { useNavigate } from 'react-router-dom'
+import Modal from '../Components/Modal'
+import { DataControlContext } from '../Context/DataControlContext'
 
 
     const inputFormClass = "border-[1px] border-blue w-full md:h-10 h-10 px-2 mt-3"
@@ -12,22 +14,27 @@ import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
 
- const {userDetails,setUserDetails,postData, userCreated,setUserCreated} = useContext(UserContext)
+ const {userDetails,setUserDetails,postData, userCreated,setUserCreated,userLoading,
+setUserLoading,userActive,userInfo} = useContext(UserContext)
+ const {showSignUpModal} = useContext(DataControlContext)
    const navigate = useNavigate()
 
- useEffect(()=>{
+  useEffect(()=>{
+   
+    if (userInfo.email) {
+      navigate("/")
+      }
+      
+      console.log(userActive,userInfo);
 
-  if (userCreated) {
-    navigate("/login")
-    setUserCreated(false)
-  }
+  },[userActive,userInfo,userLoading])
 
- },[userCreated])
 
 
 
   return (
     <div className='xl:flex'>
+      {showSignUpModal && <Modal/>}
 <div className='text-white min-h-screen xl:flex xl:flex-col xl:items-center xl:justify-center hidden xl:block w-[50%] bg-blue'>
     <h1 className='font-bold text-[2.5rem] font-sarpanch'>KRYPTOTRADE</h1>
     <p className='w-[70%] '>"Join thousands of investors who trust us to simplify and secure their crypto journey."</p>
@@ -119,11 +126,14 @@ const Register = () => {
         setUserDetails({...userDetails,[e.target.name]:e.target.value })
     }}
     />
+    {userDetails.password.length < 8 && <label className={"lg:text-lg md:text-md text-sm text-red-500"}>Password must be more than 8 characters</label>}
     </section>
     </div>
 
     <section className='flex flex-col items-center gap-y-3 my-8'>
-        <button className='bg-blue focus:opacity-60 text-white  px-6 md:px-12 py-2 rounded-md hover:opacity-70 focus:opacity-70' type='submit' >Sign up</button>
+        <button className='bg-blue focus:opacity-60 text-white  w-[160px] h-[50px] flex items-center justify-center rounded-md hover:opacity-70 focus:opacity-70' type='submit' > 
+          {userLoading ? <img src="/images/white-spinner.svg" alt="spinner" className='w-[30px] h-[30px]' />  : "Sign up"}
+        </button>
       <div  className=''>already have an account? 
         <Link to={"/login"} className='text-blue mx-2 underline'>Sign in</Link>
       </div>

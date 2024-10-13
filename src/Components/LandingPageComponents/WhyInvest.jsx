@@ -11,7 +11,7 @@ const WhyInvest = () => {
 
 
 return (
-    <article key={index} className='my-6 text-[0.75rem] sm:text-md '>
+    <article key={index} className='my-6 text-[0.75rem] sm:text-md lg:text-lg'>
 <span className='font-semibold'>{item.id}.{item.title}</span>:{item.explanation}        
     </article>
 )

@@ -10,7 +10,7 @@ import { UserContext } from '../../Context/UserContext'
     const eachFromSectionClassEmail ="mx-auto w-[90%] my-2"
 
 const Login = () => {
-  const {userLoginDetails,setUserLoginDetails,signIn,userActive,userInfo} = useContext(UserContext)
+  const {userLoginDetails,setUserLoginDetails,signIn,userActive,userInfo,userLoading,setUserLoading} = useContext(UserContext)
 
       const navigate = useNavigate()
       
@@ -18,13 +18,13 @@ const Login = () => {
       
   useEffect(()=>{
    
-    if (userActive) {
-      navigate("/dashboard")
+    if (userInfo.email) {
+      navigate("/")
       }
       
       console.log(userActive,userInfo);
 
-  },[userActive,userInfo])
+  },[userActive,userInfo,userLoading])
 
 
    
@@ -39,7 +39,7 @@ const Login = () => {
 
   <header className='flex flex-col items-center gap-y-2'>
   <h1 className='text-blue font-sarpanch font-bold text-[1.7rem]'>KRYPTOTRADE</h1>
-  <p className=''>Create Account</p>
+  <p className=''>Login</p>
   </header>
 
 
@@ -77,7 +77,9 @@ const Login = () => {
     
 
     <section className='flex flex-col items-center gap-y-3 my-8'>
-        <button className='bg-blue text-white px-6 md:px-12 py-2 rounded-md hover:opacity-70 focus:opacity-70' type='submit' >Sign in</button>
+       <button className='bg-blue focus:opacity-60 text-white  w-[160px] h-[50px] flex items-center justify-center rounded-md hover:opacity-70 focus:opacity-70' type='submit' > 
+          {userLoading ? <img src="/images/white-spinner.svg" alt="spinner" className='w-[30px] h-[30px]' />  : "Login"}
+        </button>
       <Link to={""} className='text-md underline'>forgot password?</Link>
       <div  className=''>don't have an account? 
         <Link to={"/register"} className='text-blue mx-2 underline'>Sign up</Link>

@@ -1,22 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { UserContext } from '../../Context/UserContext'
 
 
 const HeroSection = () => {
-      
+      const {userInfo} = useContext(UserContext)
   return (
     <div className='py-10 xl:py-0 sm:px-0 px-4 font-poppins xl:flex '>
         <section className='xl:flex xl:flex-col xl:justify-between py-10 xl:pt-24 sm:px-24 xl:px-12 xl:w-[37%] overflow-hidden'>
             <h1 className=' text-lg sm:text-[2rem] sm:font-normal xl:text-[1.6rem] xl:font-semibold  xs:font-bold font-semibold mb-6'>"Unlock the Future of Finance with Secure, Seamless Crypto Investments."</h1>
             <p className='sm:text-[1.1rem]'>"Start small or go big—our platform adapts to your investment goals."</p>
-        <LoginSignUpBtnsForHeroTablet/>
+      {userInfo.email ? "" :   <LoginSignUpBtnsForHeroTablet/>}
         <CurrenciesImages/>
         </section>
         <section className='xl:w-[63%] xl:h-[90vh] xl:max-h-[600px]  xl:flex xl:justify-end'>
       <img src="/images/Rectangle2.jpg" alt="image" 
       className='xl:w-[95%] object-cover' />
         </section>
-<LoginSignUpBtnsForHeroMobile/>
+{userInfo.email ? "" : <LoginSignUpBtnsForHeroMobile/>}
    
     </div>
   )

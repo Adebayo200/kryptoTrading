@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 const WhatWeDo = () => {
   return (
-    <div className='px-8'>
+    <div className='px-8' id='services'>
         <header className='space-y-8 mb-10'>
             <h1 className='text-center font-semibold'>WHAT WE DO</h1>
             <p className='text-center'>we give the best services</p>

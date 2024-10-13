@@ -8,6 +8,7 @@ module.exports = {
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
         sarpanch: ['Sarpanch', 'sans-serif'],
+         inter: ['Inter', 'sans-serif'],
       },
   colors: {
         blue: '#0019FF',      

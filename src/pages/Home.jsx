@@ -10,12 +10,22 @@ import InvestmentPlans from '../Components/LandingPageComponents/InvestmentPlans
 import MinningPlans from '../Components/LandingPageComponents/InvestmentPlans'
 import MiningPlans from '../Components/LandingPageComponents/MinningPlans'
 import OurMetrics from '../Components/LandingPageComponents/OurMetrics'
+import TopInvestors from '../Components/LandingPageComponents/TopInvestors'
+import FrequentlyAsked from '../Components/LandingPageComponents/FrequentlyAsked'
+import RecentVentures from '../Components/LandingPageComponents/RecentVentures'
+import CustomerSupport from '../Components/Support'
+import Footer from '../Components/LandingPageComponents/Footer'
+import { DataControlContext } from '../Context/DataControlContext'
+import DataSpinner from '../Components/DataSpinner'
+import SlideDownNav from '../Components/LandingPageComponents/SlideDownNav'
+import { FaArrowUp } from "react-icons/fa6";
 
 
 const Home = () => {
 
       const navigate = useNavigate()
       const {userActive,userInfo} = useContext(UserContext)
+      const {loading,investmentDataLoading,minningDataLoading} = useContext(DataControlContext)
 
 
 
@@ -30,17 +40,44 @@ const Home = () => {
 
 
 //     },[userActive,userInfo])
-  
+useEffect(()=>{
+console.log(loading,"here loading");
+console.log(investmentDataLoading,minningDataLoading,"from home");
+},[investmentDataLoading,minningDataLoading,loading])
+
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+if (loading) {
+  return(
+    <DataSpinner/>
+  )
+}  
+
   return (
     <div >
-   <LandingPageNav/>
-   <HeroSection/>
-   <AboutUs/>
-   <WhatWeDo/>
-   <WhyInvest/>
-   <InvestmentPlans/>
-  <MiningPlans/>
-  <OurMetrics/>
+      <button 
+      onClick={scrollToTop}
+      className='fixed w-[50px] h-[50px] bottom-[1%] right-[10%] bg-blue text-white font-bold flex items-center justify-center rounded-lg'><FaArrowUp className='text-white font-bold' /></button>
+      <SlideDownNav/>
+      <CustomerSupport/>
+      <LandingPageNav/>
+      <HeroSection/>
+      <AboutUs/>
+      <WhatWeDo/>
+      <WhyInvest/>
+      <InvestmentPlans/>
+      <MiningPlans/>
+      <OurMetrics/>
+      <TopInvestors/>
+      <FrequentlyAsked/>
+      <RecentVentures/>
+      <Footer/>
     </div>
   )
 }
