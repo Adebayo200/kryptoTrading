@@ -38,13 +38,13 @@ setMinnningData(dataForMinningPlans)
         className='w-[80%] md:w-[40%] xl:w-[22%] mx-auto h-[550px]  border-[1px] border-yellow '>
         <section className='bg-yellow h-[50%] py-9 flex flex-col justify-evenly text-white items-center uppercase'>
         <span className='text-[1.6rem]'>{item.package}</span>
-        <span className='text-[4rem]'>{item.percentage}</span>
+        <span className='text-[4rem]'>{item.percentage}%</span>
         <span className='text-[1.6rem]'>{item.returns}</span>
         </section>
         <section className='flex flex-col items-center h-[50%] justify-evenly py-2'>
         <aside className='flex flex-col text-yellow'>
-        <span>Minumum Deposite {item.min_dep}</span>
-        <span>Maximum Deposite {item.max_dep}</span>
+        <span>Minumum Deposite ${item.min_dep}</span>
+        <span>Maximum Deposite ${item.max_dep}</span>
         </aside>
         <Link  
         to={`/deposit/minning+${item.id}?=${item.package.toLocaleLowerCase()}`}

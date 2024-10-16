@@ -5,47 +5,20 @@ import { DataControlContext } from "../Context/DataControlContext";
 import { UserContext } from "../Context/UserContext";
 import DepositModal from "../Components/Modals/DepositModal";
 
-// const postData = async () => {
-//     try {
-//     const response = await fetch("https://eskanor.com.ng/Api/Api/create_plan.php", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/x-www-form-urlencoded"
-//       },
-//       body: JSON.stringify({
-//         userId:"2",
-//         username:"adexxx",
-//         investmentType:"mining",
-//         package:"basic",
-//         address:"svjislfjvoijvi;jszjrif",
-//         amount:"1000",
-//         hash:""
-//     }),
-//     });
-
-//     if (!response.ok) {
-//       throw new Error('Network response was not ok');
-//     }
-
-//     const data = await response.text();
-//     console.log('Success:', data);
-//   } catch (error) {
-//     console.log('Error:', error);
-//   }
-//   };
 const Deposit = ()=>{
 
 
 
   const {walletAddresses,setWalletAddresses,investmentData:dataForInvestmentsPlans,minningData:dataForMinningPlans, depositModal,setDepositModal} = useContext(DataControlContext)
+  const [depositLoading,setDepositLoading] = useState(false)
   const {userActive,userInfo} = useContext(UserContext)
   const [chosenPlan,setChosenPlan] = useState({
-    id:"",
- max_dep: "",
-min_dep: "",
-package: "",
-percentage: "",
-returns: ""
+      id:"",
+      max_dep: "",
+      min_dep: "",
+      package: "",
+      percentage: "",
+      returns: ""
   })
 
  
@@ -63,11 +36,17 @@ returns: ""
   const { id } = useParams();
 
 
-const postData = async (e) => {
-  e.preventDefault()
-  if (!depositDetails.amount || !depositDetails.hash || !depositDetails.address) {
-    return
-  }
+
+
+  const postData = async (e) => {
+    e.preventDefault()
+  setDepositLoading(true)
+
+ 
+    if (!userInfo.id || !userInfo.username || !depositDetails.amount || !depositDetails.hash || !depositDetails.address) {
+      alert("error")
+      return
+    }
     try {
     const response = await fetch("https://eskanor.com.ng/Api/Api/create_plan.php", {
       method: "POST",
@@ -75,8 +54,8 @@ const postData = async (e) => {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       body: JSON.stringify({
-        userId:depositDetails.id,
-        username:depositDetails.username,
+        userId:depositDetails.userId,
+        userName:depositDetails.username,
         investmentType:depositDetails.investmentType,
         package:depositDetails.package,
         address:depositDetails.address,
@@ -90,8 +69,29 @@ const postData = async (e) => {
     }
 
     const data = await response.json();
-    if (data.status) {
+   if (data.status) {
       setDepositModal(true)
+      setDepositLoading(false)
+
+    }
+
+    
+    // console.log('Success:', data);
+  } catch (error) {
+    alert("an error occured,retry again")
+    // console.log('Error:', error);
+  }
+  };
+
+useEffect(()=>{
+console.log(depositDetails);
+console.log(depositDetails.amount);
+
+},[depositDetails])
+useEffect(()=>{
+  if (depositModal) {
+    return
+  }
       setDepositDetails({
          userId:null,
         username:null,
@@ -101,27 +101,8 @@ const postData = async (e) => {
         amount:undefined,
         hash:undefined
       })
-      console.log('Success:', data);
-    }
-  } catch (error) {
-    alert("something went wrong")
-    console.log('Error:', error);
-  }
-  };
+},[depositModal])
 
-  // const getDepositAddresses = async()=>{
-  // const response  = await fetch("https://eskanor.com.ng/Api/Api/addresses.php")
-  // const res  = await response.json()
-  // if (res.status) {
-  //   setWalletAddresses(res.data)
-  //   return
-  // }
-  // console.log(res);
-  // } 
-
-  // useEffect(()=>{
-  //     getDepositAddresses()
-  // },[])
   useEffect(()=>{
 setDepositDetails({...depositDetails,userId:userInfo.id,username:userInfo.username,package:chosenPlan.package})
 console.log(depositDetails);
@@ -153,18 +134,18 @@ return (
      {depositModal && <DepositModal amountSent={depositDetails.amount} />}
          <article className='flex flex-col gap-y-8 md:flex-row md:flex-wrap'>
       
-        <div className='w-[75%] md:w-[40%] xl:w-[22%] mx-auto h-[550px]  border-[1px] border-yellow '>
-        <section className='bg-yellow h-[50%] py-9 flex flex-col justify-evenly text-white items-center uppercase'>
+        <div className={`w-[75%] md:w-[40%] xl:w-[22%] mx-auto h-[550px]  border-[1px] ${id.includes("investment") ? "border-blue"  : "border-yellow"}  `}>
+        <section className={`${id.includes("investment") ? "bg-blue"  : "bg-yellow"} h-[50%] py-9 flex flex-col justify-evenly text-white items-center uppercase`}>
         <span className='md:text-[1.6rem] text-[1rem]'>{chosenPlan.package}</span>
         <span className='md:text-[4rem] text-[3rem]'>{chosenPlan.percentage}</span>
         <span className='md:text-[1.6rem]  text-[1rem]'>{chosenPlan.returns}</span>
         </section>
         <section className='flex flex-col items-center h-[50%] justify-evenly py-2'>
-        <aside className='flex flex-col text-yellow'>
+        <aside className={`flex flex-col  ${id.includes("investment") ? "text-blue"  : "text-yellow"} `}>
         <span>Minumum Deposit ${chosenPlan.min_dep}</span>
         <span>Maximum Deposit ${chosenPlan.max_dep}</span>
         </aside>
-        <button className='bg-yellow text-white md:w-[70%] w-[55%] md:py-4  py-2 rounded-lg md:text-[1.5rem] text-[1.4rem]'>Deposit</button>
+        <button className={` ${id.includes("investment") ? "bg-blue"  : "bg-yellow"}  text-white md:w-[70%] w-[55%] md:py-4  py-2 rounded-lg md:text-[1.5rem] text-[1.4rem]`}>Deposit</button>
         </section>
         </div>
     </article>
@@ -187,7 +168,7 @@ onClick={()=>{
     });
 
 }}
-className="">
+className="p-2 active:bg-blue">
     <FaRegCopy className="text-[0.8rem]" />
 </button>
                 </aside>
@@ -202,7 +183,7 @@ className="">
         <input type="text"
         name="amount"
         placeholder="enter amount"
-        value={depositDetails.amount}
+        value={depositDetails.amount ? depositDetails.amount : ""}
         onChange={(e)=> setDepositDetails({...depositDetails,[e.target.name]:e.target.value}) }
         className="border-black border-[1px] py-[6px] my-2 px-2 w-full "
         />
@@ -212,7 +193,7 @@ className="">
         <input type="text"
         name="address"
         placeholder="your address"
-        value={depositDetails.address}
+        value={depositDetails.address ? depositDetails.address : ""}
         onChange={(e)=> setDepositDetails({...depositDetails,[e.target.name]:e.target.value}) }
         className="border-black border-[1px] py-[6px] my-2 px-2 w-full "
         />
@@ -223,18 +204,20 @@ className="">
         id="hash"
         name="hash"
         placeholder="hashkey"
-        value={depositDetails.hash}
+        value={depositDetails.hash ? depositDetails.hash : ""}
         onChange={(e)=> setDepositDetails({...depositDetails,[e.target.name]:e.target.value}) }
         className="border-black border-[1px] py-[6px] my-2 px-2 w-full"
         />
         </>
         <p className="text-[red] text-center mx-auto text-[0.8rem] w-[80%] leading-3 mb-8">Click on confirm after you have sent crypto from your wallet!</p>
-        <button 
+      <aside className="flex justify-center items-center">
+          <button 
         type="submit"
-        className="bg-yellow w-[50%] h-[40px] rounded-md text-white self-center hover:bg-opacity-50 focus:bg-opacity-50 "
+        className={`${id.includes("investment") ? "bg-blue"  : "bg-yellow"} w-[50%] h-[40px] rounded-md text-white flex justify-center items-center hover:bg-opacity-50 focus:bg-opacity-50 `}
         >
-            Send
+         {depositLoading ? <img src="/images/white-spinner.svg" alt="spinner" className='w-[30px] h-[30px]' />  : "send"}
         </button>
+      </aside>
 </div>
     </form>
 

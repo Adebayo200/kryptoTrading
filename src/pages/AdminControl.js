@@ -9,6 +9,7 @@ const AdminControl = () => {
     const [investmentPlans,setInvestmentPlans] = useState([])
     const [wallets,setWallets] = useState([])
     const [section,setSection] = useState("users")
+    const [allPlans,setAllPlans] = useState([])
 
     const {   walletAddresses,
     setWalletAddresses,
@@ -25,6 +26,16 @@ const AdminControl = () => {
     console.log(res);
     if (res.status) {
     setUsers(res.data)
+    }
+    // console.log("users from admin");
+    }
+
+    const fetchAllPlans = async()=>{
+    const response  = await fetch("https://eskanor.com.ng/Api/Api/plans.php")
+    const res = await response.json()
+    console.log(res);
+    if (res.status) {
+    setAllPlans(res.data)
     }
     // console.log("users from admin");
     }
@@ -80,21 +91,23 @@ setSection(menu)
 
     useEffect(()=>{
     fetchUsers()
+    fetchAllPlans()
     // getMinningPlans()
     // fetchInvestmentPlans()
     //  getDepositAddresses()
     },[])
   return (
-    <div className='flex'>
-     <aside className='w-[10%] bg-blue h-screen flex flex-col'>
+    <div className='flex m-h-screen'>
+     <aside className='w-[10%] bg-blue h-[100vh] flex flex-col'>
         <span className={`py-2 text-center w-full cursor-pointer ${section === "users" ? "bg-gray" : "" }`} onClick={()=> changeSection("users")}>Users</span>
         <span  className={`py-2 text-center w-full cursor-pointer ${section === "wallets" ? "bg-gray" : "" }`} onClick={()=> changeSection("wallets")}>Wallets</span>
         <span  className={`py-2 text-center w-full cursor-pointer ${section === "minningplans" ? "bg-gray" : "" }`} onClick={()=> changeSection("minningplans")}>Minning Plans</span>
         <span className={`py-2 text-center w-full cursor-pointer ${section === "investmentplans" ? "bg-gray" : "" }`} onClick={()=> changeSection("investmentplans")}>Investment Plans</span>
+        <span className={`py-2 text-center w-full cursor-pointer ${section === "allplans" ? "bg-gray" : "" }`} onClick={()=> changeSection("allplans")}>All Plans</span>
      </aside>
 
      <article className='w-[90%]'>
-{section === "users" ? <Users users={users}/> : section === "wallets" ? <Wallets wallets={walletAddresses}/> : section === "minningplans" ? <MinningPlans minningPlans={minningData}/> : <InvestmentPlans investmentPlans={investmentData} /> }
+{section === "users" ? <Users users={users}/> : section === "wallets" ? <Wallets wallets={walletAddresses}/> : section === "minningplans" ? <MinningPlans minningPlans={minningData}/> : section === "investmentplans" ? <InvestmentPlans investmentPlans={investmentData} /> : <AllPlans allPlans={allPlans} /> }
      </article>
     </div>
   )
@@ -320,6 +333,43 @@ return (
 )
     })}
 </div>
+        </div>
+    )
+}
+
+
+
+const AllPlans = ({allPlans})=>{
+
+
+    return (
+        <div>
+            <h1 className='text-center py-6 font-bold'>Users</h1>
+
+            <article>
+<header className='flex justify-evenly'>
+    <span>usernames</span>
+    <span>investment type</span>
+    <span>package</span>
+    <span>amount</span>
+</header>
+<div>
+{allPlans.map((plans,index)=>{
+
+    return (
+            <aside className='flex justify-evenly'>
+    <span>{plans.username}</span>
+    <span>{plans.investmentType}</span>
+    <span>{plans.package}</span>
+    <span>{plans.amount}</span>
+</aside>
+    )
+})}
+
+</div>
+
+            </article>
+
         </div>
     )
 }

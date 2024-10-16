@@ -15,6 +15,7 @@ const DataControlProvider = ({children})=>{
     const [showSignUpModal, setShowSignUpModal] = useState(false);
     const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
       const [depositModal,setDepositModal] = useState(false)
+      const [withdrawalModal,setWithdrawalModal] = useState(false)
     const [height,setHeight] = useState({
       contact:undefined,
       about:undefined,
@@ -161,7 +162,10 @@ console.log(loading);
             showChangePasswordModal,
             setShowChangePasswordModal,
             toggleChangePasswordModal,
-            depositModal,setDepositModal
+            depositModal,
+            setDepositModal,
+            withdrawalModal,
+            setWithdrawalModal
             
         }} >
             {children}

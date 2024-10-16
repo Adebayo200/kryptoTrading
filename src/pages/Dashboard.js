@@ -62,8 +62,8 @@ if (btn.route === "/signout" ) {
 }
 
     return (
-      <aside className="flex flex-col items-center space-y-4">
-        <div className="text-3xl" onClick={()=>{
+      <aside className="flex flex-col items-center space-y-4 ">
+        <div className="text-3xl " onClick={()=>{
 
           navigate(`${btn.route}`)
         }}>

@@ -44,13 +44,13 @@ setInvestmestData(dataForInvestmentsPlans)
         className='w-[80%] md:w-[40%] xl:w-[22%] mx-auto h-[550px]  border-[1px] border-blue cursor-pointer'>
         <section className='bg-blue h-[50%] py-9 flex flex-col justify-evenly text-white items-center uppercase'>
         <span className='text-[1.6rem]'>{item.package}</span>
-        <span className='text-[4rem]'>{item.percentage}</span>
+        <span className='text-[4rem]'>{item.percentage}%</span>
         <span className='text-[1.6rem]'>{item.returns}</span>
         </section>
         <section className='flex flex-col items-center h-[50%] justify-evenly py-2'>
         <aside className='flex flex-col text-blue'>
-        <span>Minumum Deposite {item.min_dep}</span>
-        <span>Maximum Deposite {item.max_dep}</span>
+        <span>Minumum Deposite ${item.min_dep}</span>
+        <span>Maximum Deposite ${item.max_dep}</span>
         </aside>
         <Link to={`/deposit/investment+${item.id}?=${item.package.toLocaleLowerCase()}`} className='bg-blue text-center text-white w-[70%] py-4 rounded-lg text-[1.5rem]'>Deposit</Link>
         </section>
