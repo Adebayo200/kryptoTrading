@@ -35,7 +35,7 @@ const postData = async (e) => {
         id:getThePlan.id,
         userId:getThePlan.userId,
         userName:getThePlan.username,
-        investmentType:"myPlans",
+        investmentType:getThePlan.investmentType,
         package:getThePlan.package,
         address:getThePlan.address,
         amount:getThePlan.amount,
