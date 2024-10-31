@@ -23,17 +23,39 @@ const Footer = () => {
 {/* CONTACT */}
     <section className='xl:w-[25%] xl:h-[350px]'>
         <h1 className='text-lg my-6 font-medium'>CONTACTS</h1>
-        <aside className='flex items-center justify-start space-x-2 my-2'>
-           <img src="images/email-account.png" alt="email" className='w-[20px] h-[20px] ' /> <span className=''>support@Kryptotrade.com</span>
+        <aside className='flex items-center justify-start space-x-2 my-2'
+         onClick={()=>{
+ const email = "Kryptotrade.kt@gmail.com"; // Replace with the recipient's email
+    const subject = "Inquiry About Services"; // Subject of the email
+    const body = "Hello, I would like to inquire about your services."; // Body of the email
+    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    // Open the email client (Gmail, etc.) with the pre-filled email
+    window.location.href = mailtoLink;
+
+    }}
+        >
+           <img src="images/email-account.png" alt="email" className='w-[20px] h-[20px] ' /> 
+           <span className=''>support@Kryptotrade.com</span>
         </aside>
         <aside className='flex items-center justify-start space-x-2 my-2'>
            <img src="images/telegram.png" alt="telegram-support" 
-           className='w-[20px] h-[20px] ' /> <span>Kryptotradesupport</span>
+           className='w-[20px] h-[20px] ' /> 
+           <span>Telegram support</span>
         </aside>
-        <aside className='flex items-center justify-start space-x-2 my-2'>
+        <aside className='flex items-center justify-start space-x-2 my-2' 
+        onClick={()=>{
+       const phoneNumber = "13094729020";
+    const message = "Hello, I would like to inquire about your services.";
+    const url = `https://wa.me/${phoneNumber}`;
+     
+      window.open(url, "_blank")
+    }}
+        >
            <img src="images/whatsapp.png" alt="whatsapp support"
            className='w-[20px] h-[20px] '
-            /> <span>Kryptotradesupport</span>
+            />
+             <span>Whatsapp support</span>
         </aside>
         <aside className='flex items-center justify-start space-x-6 my-2'>
            <img src="images/location-pin.png" alt="address" 

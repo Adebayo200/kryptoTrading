@@ -7,15 +7,96 @@ import { GoArrowUpRight } from "react-icons/go";
 import { GoArrowDownLeft } from "react-icons/go";
 import { GoSignOut } from "react-icons/go";
 import DataSpinner from '../Components/DataSpinner';
+// delete plans
+// https://eskanor.com.ng/Api/Api/delete_plans.php?id=3
+
+// get all users plans
+// https://eskanor.com.ng/Api/Api/user_plans.php?id=2
+
+
+
 const Dashboard = () => {
        const navigate = useNavigate()
        const [loading,setLoading] = useState(true)
+       const [userPlans,setUserPlans] = useState({})
       const {userActive,userInfo} = useContext(UserContext)
+      const [userPlansData,setUserPlansData ] = useState([])
+      const [balance,setBalance] = useState(0)
+
+const fetchUserPlansData = async(id)=>{
+  if (!id) {
+    return
+  }
+try {
+    const response = await fetch("https://eskanor.com.ng/Api/Api/user_plans.php?id="+ id )
+  if (!response.ok) {
+    alert("something went wrong,kindly roload the page")
+  }
+  const res = await response.json()
+  console.log(res.data);
+  
+  if (res.status) {
+    setUserPlansData(res.data)
+    // return res.data
+    
+  }
+  
+
+ 
+} catch (error) {
+  alert(error.message)
+  alert("someting went,kinldy reload te webpage")
+  return []
+}
+
+}
+useEffect(()=>{
+  // console.log(userInfo);
+  fetchUserPlansData(userInfo.id)
+
+},[])
+
+useEffect(()=>{
+console.log(userPlansData);
+},[userPlansData])
+
+
+useEffect(()=>{
+  // console.log(userPlansData);
+  const listss = [
+    {
+    amount :"3",
+  },
+    {
+    amount :"4",
+  },
+    {
+    amount :"5",
+  },
+
+]
+  
+const balanceToDisplay = userPlansData?.reduce((acc,curr)=>{
+
+if (curr.amount) {
+  const add  = Number(acc) + Number(curr.returns)
+  return add
+}
+return acc
+    },0)
+
+
+    setBalance(balanceToDisplay)
+
+    console.log(balanceToDisplay);
+    
+},[balance,userPlansData])
+
 
       useEffect(()=>{
 
-console.log(userInfo);
-console.log(userActive);
+// console.log(userInfo);
+// console.log(userActive);
 if (!userActive) {
     // navigate("/register")
     
@@ -40,7 +121,7 @@ localStorage.removeItem("myInfos")
 <div  className="background-image flex flex-col justify-center">
   <aside className="flex flex-col text-white text-md mx-4 md:text-lg">
     <span>Assets</span>
-    <span>$0.00</span>
+    <span>${balance.toFixed(2)} </span>
   </aside>
 </div>
 
@@ -165,5 +246,11 @@ const CurrencyCrypto= ()=>{
 
   )
 }
+
+
+
+
+
+
 
 

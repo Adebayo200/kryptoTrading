@@ -22,6 +22,8 @@ const DataControlProvider = ({children})=>{
       plans:undefined
 
     })
+
+    const [allPlans,setAllPlans] = useState([])
     const footerDiv = useRef() 
     const aboutDiv = useRef()
     const planstDiv = useRef()
@@ -33,6 +35,16 @@ const DataControlProvider = ({children})=>{
     setShowChangePasswordModal(!showChangePasswordModal);
   }
 
+
+      const fetchAllPlans = async()=>{
+    const response  = await fetch("https://eskanor.com.ng/Api/Api/plans.php")
+    const res = await response.json()
+    console.log(res);
+    if (res.status) {
+    setAllPlans(res.data)
+    }
+    // console.log("users from admin");
+    }
  
 // get addressses
   const getDepositAddresses = async()=>{
@@ -104,6 +116,7 @@ try {
 
 
   useEffect(()=>{
+    fetchAllPlans()
     getMinningPlans()
     fetchInvestmentPlans()
     getDepositAddresses()
@@ -165,7 +178,9 @@ console.log(loading);
             depositModal,
             setDepositModal,
             withdrawalModal,
-            setWithdrawalModal
+            setWithdrawalModal,
+            allPlans,
+            setAllPlans
             
         }} >
             {children}

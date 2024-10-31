@@ -15,6 +15,7 @@ import AddNewInvestmentPlans from './pages/EditAndAddInvestmentPlans/AddInvestme
 import EditInvestmentPlans from './pages/EditAndAddInvestmentPlans/EditInvestmentPlans';
 import ChangeMyPassword from './pages/ChangePassword';
 import AllPlans from './pages/AllPlans';
+import EditPlans from './pages/EditPlans';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
 <Route path='/editminingplans/:id' element={<EditMinningPlans/>} />
 <Route path='/addnewinvestmentplan' element={<AddNewInvestmentPlans/>} />
 <Route path='/editinvestmentplans/:id' element={<EditInvestmentPlans/>} />
+<Route path='/updatePlan/:id' element={<EditPlans/>} />
    </Routes>
    </BrowserRouter>
   );

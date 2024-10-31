@@ -63,7 +63,7 @@ if (loading) {
     <div >
       <button 
       onClick={scrollToTop}
-      className='fixed w-[50px] h-[50px] bottom-[1%] right-[10%] bg-blue text-white font-bold flex items-center justify-center rounded-lg'><FaArrowUp className='text-white font-bold' /></button>
+      className='fixed w-[50px] h-[50px] bottom-[1%] right-[10%] lg:right-[1%] bg-blue text-white font-bold flex items-center justify-center rounded-lg z-50'><FaArrowUp className='text-white font-bold' /></button>
       <SlideDownNav/>
       <CustomerSupport/>
       <LandingPageNav/>

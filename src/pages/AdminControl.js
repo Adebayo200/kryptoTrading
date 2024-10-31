@@ -120,8 +120,42 @@ setSection(menu)
 
 
 const Users = ({users})=>{
+const [userPlansData,setUserPlansData] = useState([]) 
+
+const fetchUserPlansData = async(id)=>{
+  if (!id) {
+    return
+  }
+try {
+    const response = await fetch("https://eskanor.com.ng/Api/Api/user_plans.php?id="+ id )
+  if (!response.ok) {
+    alert("something went wrong,kindly roload the page")
+  }
+  const res = await response.json()
+//   console.log(res.data);
+  
+  if (res.status) {
+    console.log(res.data.length < 1);
+    if (res.data.length < 1) {
+        alert("user currently doesnt have any plan")
+    }
+    setUserPlansData(res.data)
+    // return res.data
+    
+  }
+  
+
+ 
+} catch (error) {
+  alert(error.message)
+  alert("someting went,kinldy reload te webpage")
+  return []
+}
+
+}
 
 
+    
     return (
 
         
@@ -144,6 +178,7 @@ return (
         <span className='w-[20%] text-center'>{user.first_name}</span>
         <span className='w-[20%] text-center'>{user.last_name}</span>
         <span className='w-[20%] text-center'>{user.created_at}</span>
+     
     </div>
 )
 
@@ -341,27 +376,53 @@ return (
 
 const AllPlans = ({allPlans})=>{
 
-
+const navigate  = useNavigate()
     return (
         <div>
             <h1 className='text-center py-6 font-bold'>Users</h1>
 
             <article>
-<header className='flex justify-evenly'>
-    <span>usernames</span>
+<header className='flex justify-between '>
+    <span className=''>usernames</span>
     <span>investment type</span>
     <span>package</span>
     <span>amount</span>
+    <div className='w-[15%] text-center '>
+    <span>Action</span>
+    </div>
 </header>
 <div>
 {allPlans.map((plans,index)=>{
 
     return (
-            <aside className='flex justify-evenly'>
+            <aside className='flex justify-between my-2'>
     <span>{plans.username}</span>
     <span>{plans.investmentType}</span>
     <span>{plans.package}</span>
     <span>{plans.amount}</span>
+    <div className='w-[15%] flex justify-evenly '>
+
+    <span className='cursor-pointer  bg-[red] px-2 py-[2px] rounded-md ' onClick={async()=> {
+        
+        const response = await fetch("https://eskanor.com.ng/Api/Api/delete_plan.php?id="+ plans.id)
+        if (response.ok) {
+            window.location.reload()
+        }
+        console.log(response.ok);
+        
+    }}>Delete</span>
+    <span
+    className='bg-blue px-2 py-[2px] rounded-md cursor-pointer'
+    onClick={()=> {
+        // console.log(plans);
+        
+        navigate("/updatePlan/"+plans.id)
+    
+    }
+    
+    }
+    >update</span>
+    </div>
 </aside>
     )
 })}
