@@ -107,6 +107,8 @@ setShowChangePasswordModal,} = useContext(DataControlContext)
     const signIn = async (e) => {
      
     e.preventDefault()
+
+    
     if (!userLoginDetails.password || !userLoginDetails.email) {
         alert("empty field")
         return
@@ -127,6 +129,7 @@ setShowChangePasswordModal,} = useContext(DataControlContext)
     pwd:userLoginDetails.password,
     }),
     });
+console.log();
 
     if (!response.ok) {
         alert("something went wrong,please try again")
@@ -135,12 +138,12 @@ setShowChangePasswordModal,} = useContext(DataControlContext)
          return
         }
         
+        const data = await response.json();
+        
         if (!data.status) {
         setUserLoading(false)
         alert("something went wrong,please try again")
     }
-    
-    const data = await response.json();
     if (data.status) {
         console.log('Success:', data);
         setUserActive(data.status)
