@@ -40,13 +40,13 @@ const Deposit = ()=>{
 
   const postData = async (e) => {
     e.preventDefault()
-  setDepositLoading(true)
-
- 
+    
+    
     if (!userInfo.id || !userInfo.username || !depositDetails.amount || !depositDetails.hash || !depositDetails.address) {
       alert("error")
       return
     }
+    setDepositLoading(true)
     try {
     const response = await fetch("https://eskanor.com.ng/Api/Api/create_plan.php", {
       method: "POST",
@@ -112,20 +112,27 @@ console.log(depositDetails);
   useEffect(()=>{
 // console.log(walletAddresses);
 console.log();
-
+sessionStorage.setItem("selectedPackage",id)
 console.log();
 if (id.includes("investment")) {
   setDepositDetails({...depositDetails, investmentType:"investment"})
-  const findActualType = dataForInvestmentsPlans.find(item => item.id == id.slice(-1))
-  console.log(findActualType);
-  setChosenPlan(findActualType)
+  const getSelectedPackage = sessionStorage.getItem("selectedPackage")
+  const findActualType = dataForInvestmentsPlans.find(item => item.id == id.slice(-1) || getSelectedPackage)
+  console.log("type",findActualType);
+  if (findActualType) {
+    sessionStorage.setItem("selectedPlan",JSON.stringify(findActualType))
+  }
+  setChosenPlan(findActualType || JSON.parse(sessionStorage.getItem("selectedPlan")))
   
 }
 else{
   setDepositDetails({...depositDetails, investmentType:"minning"})
   const findActualType = dataForMinningPlans.find(item => item.id == id.slice(-1))
-  console.log(findActualType);
-  setChosenPlan(findActualType)
+  console.log("type",findActualType);
+  if (findActualType) {
+    sessionStorage.setItem("selectedPlan",JSON.stringify(findActualType))
+  }
+  setChosenPlan(findActualType || JSON.parse(sessionStorage.getItem("selectedPlan")))
 }
   },[])
    
@@ -150,7 +157,7 @@ return (
         </div>
     </article>
 
-    <form className="" onSubmit={postData}>
+    <div className="" >
     <p className="text-center">copy the wallet address you want to deposit to</p>
         <div>
 
@@ -160,7 +167,8 @@ return (
                 <aside key={index} className="flex items-center justify-between border-black border-[1px]  my-4 px-2 xl:text-lg py-2 xs:py-0">
 <span className="w-[20%] xs:text-[0.8rem] xxs:text-[0.65rem]  text-[0.5rem] font-semibold ">{item.coin_name}</span> <p className="w-[70%] text-wrap xs:text-[0.7rem] text-[0.5rem] wrap  xl:text-[1.5rem] xxs:text-[0.6rem] md:text-[1rem] xl:tracking-widest md:tracking-wide ">{item.address}</p> 
 <button
-onClick={()=>{
+onClick={(e)=>{
+  e.stopPropagation()
  navigator.clipboard.writeText(item.address).then(() => {
       alert(" copied to clipboard!");
     }).catch((err) => {
@@ -177,7 +185,7 @@ className="p-2 active:bg-blue">
 
         </div>
 
-<div className="flex flex-col">
+<form className="flex flex-col" onSubmit={postData}>
   <>
 <label htmlFor="amount">Amount</label>
         <input type="text"
@@ -218,8 +226,8 @@ className="p-2 active:bg-blue">
          {depositLoading ? <img src="/images/white-spinner.svg" alt="spinner" className='w-[30px] h-[30px]' />  : "send"}
         </button>
       </aside>
-</div>
-    </form>
+</form>
+    </div>
 
     </div>
 )

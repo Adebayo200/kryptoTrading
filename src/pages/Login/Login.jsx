@@ -49,7 +49,7 @@ const Login = () => {
     <section className={eachFromSectionClassEmail}>
     <label htmlFor="email" className={labelFromClass}>Email Address</label>
     <br />
-    <input type="text"
+    <input type="email"
     id='email'
     name ="email"
     className={ inputFormClassEmail}

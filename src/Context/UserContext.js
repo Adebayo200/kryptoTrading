@@ -107,6 +107,10 @@ setShowChangePasswordModal,} = useContext(DataControlContext)
     const signIn = async (e) => {
      
     e.preventDefault()
+    if (!userLoginDetails.password || !userLoginDetails.email) {
+        alert("empty field")
+        return
+    }
        if (userInfo.email) {
         alert("you're already signed in")
             return
@@ -124,10 +128,18 @@ setShowChangePasswordModal,} = useContext(DataControlContext)
     }),
     });
 
-    // if (!response.ok) {
-    // throw new Error('Network response was not ok');
-    // }
-
+    if (!response.ok) {
+        alert("something went wrong,please try again")
+         setUserLoading(false)
+         throw new Error('Network response was not ok');
+         return
+        }
+        
+        if (!data.status) {
+        setUserLoading(false)
+        alert("something went wrong,please try again")
+    }
+    
     const data = await response.json();
     if (data.status) {
         console.log('Success:', data);
@@ -136,8 +148,9 @@ setShowChangePasswordModal,} = useContext(DataControlContext)
         localStorage.setItem("myInfos",JSON.stringify(data.data))
         setUserInfo(data.data)
     }
-    } catch (error) {
-        alert("error")
+} catch (error) {
+        setUserLoading(false)
+        alert(error.message)
     console.error('Error:', error);
     }
     };
