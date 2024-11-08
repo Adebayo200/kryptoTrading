@@ -37,7 +37,7 @@ const AboutUsArticle = ()=>{
 Security is at the heart of what we do. We implement the highest standards of encryption, multi-factor authentication, and cold storage to ensure that your investments and personal data are protected at all times. Our user-friendly interface, coupled with round-the-clock customer support and a wealth of educational resources, empowers you to make informed investment decisions.
 <br />
 <br />
-At CriptoTrading, we&rsquo;re committed to helping you achieve your financial goals in the rapidly evolving world of cryptocurrency. Join us today and discover the future of investing.</p>
+At Kryptotrade, we&rsquo;re committed to helping you achieve your financial goals in the rapidly evolving world of cryptocurrency. Join us today and discover the future of investing.</p>
         </article>
     )
 }
