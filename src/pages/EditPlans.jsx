@@ -26,7 +26,7 @@ const postData = async (e) => {
     console.log(amountToReturn);
     
     try {
-    const response = await fetch("https://eskanor.com.ng/Api/Api/update_plan.php", {
+    const response = await fetch("https://kryptotradingbackend.com.ng/Api/update_plan.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"

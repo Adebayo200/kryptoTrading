@@ -26,7 +26,7 @@ if (!editedFormObject.coinName || !editedFormObject.address) {
 }
 
     try {
-    const response = await fetch("https://eskanor.com.ng/Api/Api/update_address.php", {
+    const response = await fetch("https://kryptotradingbackend.com.ng/Api/update_address.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"

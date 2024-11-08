@@ -48,7 +48,7 @@ const Deposit = ()=>{
     }
     setDepositLoading(true)
     try {
-    const response = await fetch("https://eskanor.com.ng/Api/Api/create_plan.php", {
+    const response = await fetch("https://kryptotradingbackend.com.ng/Api/create_plan.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"

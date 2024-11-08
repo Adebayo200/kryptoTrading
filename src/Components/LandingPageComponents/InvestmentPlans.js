@@ -11,7 +11,7 @@ const InvestmentPlans = () => {
   const navigate =  useNavigate()
 
   const fetchInvestmentPlans = async()=>{
-const response = await fetch("https://eskanor.com.ng/Api/Api/investments.php")
+const response = await fetch("https://kryptotradingbackend.com.ng/Api/investments.php")
 const res = await response.json()
 if (res.status) {
   setInvestmestData(res.data)

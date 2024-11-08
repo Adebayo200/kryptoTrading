@@ -37,7 +37,7 @@ const DataControlProvider = ({children})=>{
 
 
       const fetchAllPlans = async()=>{
-    const response  = await fetch("https://eskanor.com.ng/Api/Api/plans.php")
+    const response  = await fetch("https://kryptotradingbackend.com.ng/Api/plans.php")
     const res = await response.json()
     console.log(res);
     if (res.status) {
@@ -49,7 +49,7 @@ const DataControlProvider = ({children})=>{
 // get addressses
   const getDepositAddresses = async()=>{
 try {
-    const response  = await fetch("https://eskanor.com.ng/Api/Api/addresses.php")
+    const response  = await fetch("https://kryptotradingbackend.com.ng/Api/addresses.php")
   
   
     if (response.ok) {
@@ -70,7 +70,7 @@ try {
     const getMinningPlans =async ()=>{
       setInvestmestDataLoading(true)
       try {
-          const response = await fetch("https://eskanor.com.ng/Api/Api/minings.php")
+          const response = await fetch("https://kryptotradingbackend.com.ng/Api/minings.php")
         console.log("from investmentData",response);
           if (response.ok) {
       const res = await response.json()
@@ -84,7 +84,7 @@ try {
 
         
       }
-    // const response = await fetch("https://eskanor.com.ng/Api/Api/minings.php")
+    // const response = await fetch("https://kryptotradingbackend.com.ng/Api/minings.php")
     // const res = await response.json()
     // console.log(res);
     // if (res.status) {
@@ -97,7 +97,7 @@ try {
   const fetchInvestmentPlans = async()=>{
     setInvestmestDataLoading(true)
     try {
-      const response = await fetch("https://eskanor.com.ng/Api/Api/investments.php")
+      const response = await fetch("https://kryptotradingbackend.com.ng/Api/investments.php")
       if (response.ok) {
   const res = await response.json()
   setInvestmestData(res.data)

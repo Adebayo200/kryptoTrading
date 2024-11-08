@@ -21,7 +21,7 @@ const AdminControl = () => {
     // GET USERS DATA
 
     const fetchUsers = async()=>{
-    const response  = await fetch("https://eskanor.com.ng/Api/Api/users.php")
+    const response  = await fetch("https://kryptotradingbackend.com.ng/Api/users.php")
     const res = await response.json()
     console.log(res);
     if (res.status) {
@@ -31,7 +31,7 @@ const AdminControl = () => {
     }
 
     const fetchAllPlans = async()=>{
-    const response  = await fetch("https://eskanor.com.ng/Api/Api/plans.php")
+    const response  = await fetch("https://kryptotradingbackend.com.ng/Api/plans.php")
     const res = await response.json()
     console.log(res);
     if (res.status) {
@@ -43,7 +43,7 @@ const AdminControl = () => {
 
     // GET MINNING PLANS DATA
     // const getMinningPlans =async ()=>{
-    // const response = await fetch("https://eskanor.com.ng/Api/Api/minings.php")
+    // const response = await fetch("https://kryptotradingbackend.com.ng/Api/minings.php")
     // const res = await response.json()
     // console.log(res);
     // if (res.status) {
@@ -60,7 +60,7 @@ const AdminControl = () => {
     // INVESTMENT PLANS DATA
 
 //  const fetchInvestmentPlans = async()=>{
-// const response = await fetch("https://eskanor.com.ng/Api/Api/investments.php")
+// const response = await fetch("https://kryptotradingbackend.com.ng/Api/investments.php")
 // const res = await response.json()
 // if (res.status) {
 //  setInvestmentPlans(res.data)
@@ -73,7 +73,7 @@ const AdminControl = () => {
 //   }
 
 // const getDepositAddresses = async()=>{
-//   const response  = await fetch("https://eskanor.com.ng/Api/Api/addresses.php")
+//   const response  = await fetch("https://kryptotradingbackend.com.ng/Api/addresses.php")
 //   const res  = await response.json()
 //   if (res.status) {
 //     setWallets(res.data)
@@ -127,7 +127,7 @@ const fetchUserPlansData = async(id)=>{
     return
   }
 try {
-    const response = await fetch("https://eskanor.com.ng/Api/Api/user_plans.php?id="+ id )
+    const response = await fetch("https://kryptotradingbackend.com.ng/Api/user_plans.php?id="+ id )
   if (!response.ok) {
     alert("something went wrong,kindly roload the page")
   }
@@ -220,7 +220,7 @@ return (
             <span className='cursor-pointer' 
             onClick={async()=>{
    
-   const del  =await fetch(`https://eskanor.com.ng/Api/Api/delete_address.php?id=${w.id}`)
+   const del  =await fetch(`https://kryptotradingbackend.com.ng/Api/delete_address.php?id=${w.id}`)
    if (del.ok) {
      navigate(0);
      return
@@ -284,7 +284,7 @@ return (
             <span className='cursor-pointer'
                onClick={async()=>{
 
-   const del  =await fetch(` https://eskanor.com.ng/Api/Api/delete_investment.php?id=${plan.id}`)
+   const del  =await fetch(`https://kryptotradingbackend.com.ng/Api/delete_investment.php?id=${plan.id}`)
    if (del.ok) {
      navigate(0);
      return
@@ -346,7 +346,7 @@ return (
         className='cursor-pointer' 
         onClick={async()=>{
         try {
-        const del  = await fetch(`https://eskanor.com.ng/Api/Api/delete_mining.php?id=${plan.id}`)
+        const del  = await fetch(`https://kryptotradingbackend.com.ng/Api/delete_mining.php?id=${plan.id}`)
         if (del.ok) {
         navigate(0);
         return
@@ -359,7 +359,7 @@ return (
         alert("an error occured")
         }
 
-        // https://eskanor.com.ng/Api/Api/delete_mining.php?id=5
+        // https://kryptotradingbackend.com.ng/Api/delete_mining.php?id=5
 
         }}
             >delete</span>
@@ -404,7 +404,7 @@ const navigate  = useNavigate()
 
     <span className='cursor-pointer  bg-[red] px-2 py-[2px] rounded-md ' onClick={async()=> {
         
-        const response = await fetch("https://eskanor.com.ng/Api/Api/delete_plan.php?id="+ plans.id)
+        const response = await fetch("https://kryptotradingbackend.com.ng/Api/delete_plan.php?id="+ plans.id)
         if (response.ok) {
             window.location.reload()
         }

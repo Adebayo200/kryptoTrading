@@ -9,7 +9,7 @@ const MiningPlans = () => {
   const navigate = useNavigate()
 
   const getMinningPlans =async ()=>{
-const response = await fetch("https://eskanor.com.ng/Api/Api/minings.php")
+const response = await fetch("https://kryptotradingbackend.com.ng/Api/minings.php")
 const res = await response.json()
 console.log(res);
 if (res.status) {

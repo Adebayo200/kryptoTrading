@@ -8,10 +8,10 @@ import { GoArrowDownLeft } from "react-icons/go";
 import { GoSignOut } from "react-icons/go";
 import DataSpinner from '../Components/DataSpinner';
 // delete plans
-// https://eskanor.com.ng/Api/Api/delete_plans.php?id=3
+// https://kryptotradingbackend.com.ng/Api/delete_plans.php?id=3
 
 // get all users plans
-// https://eskanor.com.ng/Api/Api/user_plans.php?id=2
+// https://kryptotradingbackend.com.ng/Api/user_plans.php?id=2
 
 
 
@@ -28,7 +28,7 @@ const fetchUserPlansData = async(id)=>{
     return
   }
 try {
-    const response = await fetch("https://eskanor.com.ng/Api/Api/user_plans.php?id="+ id )
+    const response = await fetch("https://kryptotradingbackend.com.ng/Api/user_plans.php?id="+ id )
   if (!response.ok) {
     alert("something went wrong,kindly roload the page")
   }

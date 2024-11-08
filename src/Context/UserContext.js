@@ -52,7 +52,7 @@ setShowChangePasswordModal,} = useContext(DataControlContext)
         }
     setUserLoading(true)
     try {
-    const response = await fetch('https://eskanor.com.ng/Api/Api/signup.php', {
+    const response = await fetch('https://kryptotradingbackend.com.ng/Api/signup.php', {
     method: 'POST',
     headers: {
     'Content-Type': 'application/x-www-form-urlencoded',
@@ -119,7 +119,7 @@ setShowChangePasswordModal,} = useContext(DataControlContext)
         }
     setUserLoading(true)
     try {
-    const response = await fetch('https://eskanor.com.ng/Api/Api/login.php', {
+    const response = await fetch('https://kryptotradingbackend.com.ng/Api/login.php', {
     method: 'POST',
     headers: {
     'Content-Type': 'application/x-www-form-urlencoded',
@@ -175,7 +175,7 @@ if (changePasswordDetails.newPassword.length < 8) {
         return
     }
     try {
-    const response = await fetch("https://eskanor.com.ng/Api/Api/update_password.php", {
+    const response = await fetch("https://kryptotradingbackend.com.ng/Api/update_password.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
