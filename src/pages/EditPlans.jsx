@@ -10,7 +10,7 @@ const EditPlans = () => {
   const [amountToReturn,setAmountToReturn] = useState(0)
     const {id} = useParams()
 const { allPlans,setAllPlans} = useContext(DataControlContext)
-const getThePlan = allPlans.find(item => item.id === id )
+const getThePlan = allPlans.find(item => item.id == id )
 
 
 useEffect(()=>{

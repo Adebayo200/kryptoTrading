@@ -14,7 +14,7 @@ const EditAddress = () => {
         address:"" 
 }
 )
-const findWallet = walletAddresses.find(item=> item.id === id)
+const findWallet = walletAddresses.find(item=> item.id == id)
 
     const postData = async (e) => {
         e.preventDefault()

@@ -14,7 +14,7 @@ const EditInvestmentPlans = () => {
     const {id} = useParams()
     const {investmentData,setInvestmestData} = useContext(DataControlContext)
  
-const findInvestmentPlans = investmentData.find(item=> item.id === id)
+const findInvestmentPlans = investmentData.find(item=> item.id == id)
 
 const navigate = useNavigate()
 

@@ -14,7 +14,15 @@ const EditMinningPlans = () => {
     const {id} = useParams()
     const {minningData,setMinnningData} = useContext(DataControlContext)
  
-const findMinningPlans = minningData.find(item=> item.id === id)
+const findMinningPlans = minningData.find(item=> item.id == id)
+// useEffect(()=>{
+//   console.log("mData",minningData);
+  
+//   console.log("findMdata",findMinningPlans);
+//   console.log("Id",id);
+  
+// },[])
+
 
 const navigate = useNavigate()
 
