@@ -10,8 +10,10 @@ const Modal = () => {
           {/* Modal content */}
           <div className="bg-white w-4/5 md:w-1/2 p-6 rounded shadow-lg flex flex-col items-center">
             {/* <h2 className="text-2xl font-semibold mb-4">Modal Title</h2> */}
-            <p className="mb-6 text-blue">
-             Account successfully created
+            <p className="mb-6 text-blue text-center">
+             Account successfully created and
+             <br />
+             a verification mail has been sent to your email 
             </p>
             <button
               onClick={()=>{

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import LandingPageNav from '../Components/LandingPageComponents/Navbar'
 import HeroSection from '../Components/LandingPageComponents/HeroSection'
@@ -26,6 +26,7 @@ const Home = () => {
       const navigate = useNavigate()
       const {userActive,userInfo} = useContext(UserContext)
       const {loading,investmentDataLoading,minningDataLoading} = useContext(DataControlContext)
+      const [notVerifiedModal,setNotVerifiedModal] = useState(false)
 
 
 
@@ -37,6 +38,13 @@ const Home = () => {
 // else{
 //   navigate("/")
 // }
+useEffect(()=>{
+console.log(userInfo);
+if (userInfo.email && !userInfo.verified) {
+  // alert("you're yet to verify your email Address\nkindly check your email for the verification mail  ")
+  setNotVerifiedModal(true)
+}
+},[])
 
 
 //     },[userActive,userInfo])
@@ -59,8 +67,30 @@ if (loading) {
   )
 }  
 
+
+
+
   return (
     <div >
+      {notVerifiedModal && <div className="trans fixed w-screen h-screen top-0  bg-opacity-80   flex items-center justify-center z-50" >
+          {/* Modal content */}
+          <div  className="bg-white w-4/5 md:w-1/2 p-6 rounded shadow-lg flex flex-col items-center">
+            {/* <h2 className="text-2xl font-semibold mb-4">Modal Title</h2> */}
+            <p className="mb-6 text-blue text-center">
+            you're yet to verify your email Address
+             <br />
+            kindly check your email for the verification mail
+            </p>
+            <button
+              onClick={()=>{
+              setNotVerifiedModal(false)
+              }}
+              className="mt-4 bg-blue text-white py-2 px-4 rounded font-semibold w-[60%] md:w-[40%]"
+            >
+             ok
+            </button>
+          </div>
+        </div>}
       <button 
       onClick={scrollToTop}
       className='fixed w-[50px] h-[50px] bottom-[1%] right-[10%] lg:right-[1%] bg-blue text-white font-bold flex items-center justify-center rounded-lg z-50'><FaArrowUp className='text-white font-bold' /></button>
