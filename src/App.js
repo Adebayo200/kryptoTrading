@@ -17,6 +17,8 @@ import ChangeMyPassword from './pages/ChangePassword';
 import AllPlans from './pages/AllPlans';
 import EditPlans from './pages/EditPlans';
 import VerifyEmail from './pages/VerifyEmail';
+import ForgotPassword from './pages/ForgotPassword';
+import NewPassword from './pages/NewPassword';
 
 function App() {
   return (
@@ -39,6 +41,8 @@ function App() {
 <Route path='/editinvestmentplans/:id' element={<EditInvestmentPlans/>} />
 <Route path='/updatePlan/:id' element={<EditPlans/>} />
 <Route path='/verify/user/:id' element={<VerifyEmail/>} />
+<Route path='/forgotpassword' element={<ForgotPassword/>} />
+<Route path='/updatepassword' element={<NewPassword/>} />
    </Routes>
    </BrowserRouter>
   );

@@ -14,6 +14,8 @@ const Modal = () => {
              Account successfully created and
              <br />
              a verification mail has been sent to your email 
+             <br />
+             Kindly check your mail box or spam for the mail
             </p>
             <button
               onClick={()=>{

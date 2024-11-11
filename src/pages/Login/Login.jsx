@@ -80,7 +80,7 @@ const Login = () => {
        <button className='bg-blue focus:opacity-60 text-white  w-[160px] h-[50px] flex items-center justify-center rounded-md hover:opacity-70 focus:opacity-70' type='submit' > 
           {userLoading ? <img src="/images/white-spinner.svg" alt="spinner" className='w-[30px] h-[30px]' />  : "Login"}
         </button>
-      <Link to={""} className='text-md underline'>forgot password?</Link>
+      <Link to={"/forgotpassword"} className='text-md underline'>forgot password?</Link>
       <div  className=''>don't have an account? 
         <Link to={"/register"} className='text-blue mx-2 underline'>Sign up</Link>
       </div>
