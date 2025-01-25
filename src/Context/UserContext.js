@@ -71,9 +71,10 @@ setShowChangePasswordModal,} = useContext(DataControlContext)
     }
 
     const data = await response.json();
+    console.log(data)
     if (data.status) {
         // alert(data.message)
-        console.log(data);
+        // console.log(data);
         
         setUserLoading(false)
         setShowSignUpModal(true)
@@ -86,18 +87,24 @@ setShowChangePasswordModal,} = useContext(DataControlContext)
         username:""
     })
     }
+
+if (!data.status) {
+    alert(data.message)
+    setUserLoading(false)
+    return
+}
     // console.log('Success:', data);
     // console.log('Status:', data.status);
     } catch (error) {
         alert("error")
         setUserLoading(false)
-    console.error('Error:', error);
+    console.error(error);
     }
     };
 
 
     useEffect(()=>{
-    console.log(userDetails);
+    // console.log(userDetails);
     },[userDetails])
 
 
@@ -129,7 +136,7 @@ setShowChangePasswordModal,} = useContext(DataControlContext)
     pwd:userLoginDetails.password,
     }),
     });
-console.log();
+// console.log();
 
     if (!response.ok) {
         alert("something went wrong,please try again")
@@ -145,7 +152,7 @@ console.log();
         alert("something went wrong,please try again")
     }
     if (data.status) {
-        console.log('Success:', data);
+        // console.log('Success:', data);
         setUserActive(data.status)
         setUserLoading(false)
         localStorage.setItem("myInfos",JSON.stringify(data.data))
@@ -154,7 +161,7 @@ console.log();
 } catch (error) {
         setUserLoading(false)
         alert(error.message)
-    console.error('Error:', error);
+    // console.error('Error:', error);
     }
     };
 
@@ -206,7 +213,7 @@ if (changePasswordDetails.newPassword.length < 8) {
         console.log('Success:', data);
     }
   } catch (error) {
-    console.log('Error:', error);
+    // console.log('Error:', error);
     alert("something went wrong")
     //  setUserLoading(false)
   }
@@ -215,7 +222,7 @@ if (changePasswordDetails.newPassword.length < 8) {
 
 
 useEffect(()=>{
-console.log(userInfo);
+// console.log(userInfo);
 
 },[userLoginDetails,userInfo])
 

@@ -71,7 +71,7 @@ try {
       setInvestmestDataLoading(true)
       try {
           const response = await fetch("https://kryptotradingbackend.com.ng/Api/minings.php")
-        console.log("from investmentData",response);
+        // console.log("from investmentData",response);
           if (response.ok) {
       const res = await response.json()
     setMinnningData(res.data)
@@ -132,7 +132,7 @@ else if (!investmentDataLoading && !minningDataLoading) {
   setLoading(false)
 }
 
-console.log(loading);
+// console.log(loading);
 
 },[loading,investmentDataLoading,minningDataLoading])
 

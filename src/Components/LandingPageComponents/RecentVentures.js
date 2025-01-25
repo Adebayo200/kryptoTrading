@@ -4,18 +4,18 @@ import { IoCalendarOutline } from "react-icons/io5";
 
 const RecentVentures = () => {
   return (
-    <div className='px-4 font-poppins'>
+    <div className='px-4 font-poppins mb-32'>
       <h1 className='text-center font-semibold text-lg'>Our Recent Ventures</h1>
 
       <p className=' xl:w-[70%] mx-auto text-center'>We’ve revitalized struggling businesses and assisted leading companies in boosting their revenue over time. Here are some of our most successful services.</p>
 
 
 
-    <article className='flex flex-col items-center xl:flex-row xl:justify-between'>
+    <article className='flex flex-col items-center xl:flex-row xl:justify-between lg:h-[650px] lg:my-16'>
 {ventures.map((item,index)=>{
 
 
-return <div className='w-[85%] xl:w-[30%] my-4 shadow-lg'>
+return <div className='w-[85%] xl:w-[30%] my-4 shadow-lg lg:h-[85%]'>
     <img src={item.img} alt={item.heading} />
     <aside>
         <h1 className='font-normal text-lg mt-6 px-2' >{item.heading}</h1>
