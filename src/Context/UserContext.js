@@ -67,7 +67,12 @@ setShowChangePasswordModal,} = useContext(DataControlContext)
     });
 
     if (!response.ok) {
-    throw new Error('Network response was not ok');
+    // throw new Error('Network response was not ok');
+    alert(response.statusText)
+    setUserLoading(false)
+    console.log(response);
+    
+    return
     }
 
     const data = await response.json();
@@ -96,7 +101,7 @@ if (!data.status) {
     // console.log('Success:', data);
     // console.log('Status:', data.status);
     } catch (error) {
-        alert("error")
+        alert("an error occured")
         setUserLoading(false)
     console.error(error);
     }

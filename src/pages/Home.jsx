@@ -49,8 +49,8 @@ if (userInfo.email && !userInfo.verified) {
 
 //     },[userActive,userInfo])
 useEffect(()=>{
-console.log(loading,"here loading");
-console.log(investmentDataLoading,minningDataLoading,"from home");
+// console.log(loading,"here loading");
+// console.log(investmentDataLoading,minningDataLoading,"from home");
 },[investmentDataLoading,minningDataLoading,loading])
 
 
