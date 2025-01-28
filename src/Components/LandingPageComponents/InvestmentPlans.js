@@ -2,10 +2,12 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { DataControlContext } from '../../Context/DataControlContext'
+import { UserContext } from '../../Context/UserContext'
 
 const InvestmentPlans = () => {
   const [investmentData,setInvestmestData] = useState([])
   const { investmentData:dataForInvestmentsPlans, setInvestmestData:setDataForInvestmentPlans,loading,height,setHeight,planstDiv} = useContext(DataControlContext)
+  const {userInfo} = useContext(UserContext)
   const plans = useRef(null)
   
   const navigate =  useNavigate()
@@ -52,7 +54,15 @@ setInvestmestData(dataForInvestmentsPlans)
         <span>Minumum Deposite ${item.min_dep}</span>
         <span>Maximum Deposite ${item.max_dep}</span>
         </aside>
-        <Link to={`/deposit/investment+${item.id}?=${item.package.toLocaleLowerCase()}`} className='bg-blue text-center text-white w-[70%] py-4 rounded-lg text-[1.5rem]'>Deposit</Link>
+        {userInfo.email &&   <Link to={`/deposit/investment+${item.id}?=${item.package.toLocaleLowerCase()}`} className='bg-blue text-center text-white w-[70%] py-4 rounded-lg text-[1.5rem]'>Deposit</Link>}
+        {!userInfo.email &&  <button
+        className='bg-blue text-center text-white w-[70%] py-4 rounded-lg text-[1.5rem]'
+        onClick={()=>{
+          alert("please sign in")
+          return
+        }}
+        >Deposit</button> }
+
         </section>
         </div>
             )

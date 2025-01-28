@@ -2,11 +2,13 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { DataControlContext } from '../../Context/DataControlContext'
+import { UserContext } from '../../Context/UserContext'
 
 const MiningPlans = () => {
   const [minningData,setMinnningData] = useState([])
   const { minningData:dataForMinningPlans,setMinnningData:setDataForMinningPlans,loading} = useContext(DataControlContext)
   const navigate = useNavigate()
+  const {userInfo} = useContext(UserContext)
 
   const getMinningPlans =async ()=>{
 const response = await fetch("https://kryptotradingbackend.com.ng/Api/minings.php")
@@ -46,9 +48,16 @@ setMinnningData(dataForMinningPlans)
         <span>Minumum Deposite ${item.min_dep}</span>
         <span>Maximum Deposite ${item.max_dep}</span>
         </aside>
-        <Link  
-        to={`/deposit/minning+${item.id}?=${item.package.toLocaleLowerCase()}`}
-        className='text-center bg-yellow text-white w-[70%] py-4 rounded-lg text-[1.5rem]'>Deposit</Link  >
+{userInfo.email && <Link  
+to={`/deposit/minning+${item.id}?=${item.package.toLocaleLowerCase()}`}
+className='text-center bg-yellow text-white w-[70%] py-4 rounded-lg text-[1.5rem]'>Deposit</Link  >}
+  {!userInfo.email &&  <button
+        className='text-center bg-yellow text-white w-[70%] py-4 rounded-lg text-[1.5rem]'
+        onClick={()=>{
+          alert("please sign in")
+          return
+        }}
+        >Deposit</button> }
         </section>
         </div>
             )

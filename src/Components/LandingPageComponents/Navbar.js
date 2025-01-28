@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FaBars } from "react-icons/fa";
 import { DataControlContext } from '../../Context/DataControlContext';
 import { UserContext } from '../../Context/UserContext';
@@ -25,9 +25,22 @@ export default LandingPageNav
 
 const NavigateLinksForDesktop = ()=>{
   const {navOpen,setNavOpen,toggleNavbar,height,setHeight,footerDiv,aboutDiv,planstDiv } = useContext(DataControlContext)
+  const {userInfo} = useContext(UserContext)
+  const navigate = useNavigate()
     return (
           <div className='lg:block hidden lg:flex xl:w-[30%] lg:w-[40%] justify-between xl:text-[0.7rem]'>
-        <Link to={"/dashboard"} className='text-blue font-semibold '>DASHBOARD</Link>
+        {/* <Link to={"/dashboard"} className='text-blue font-semibold '>DASHBOARD</Link> */}
+        <button className='text-blue font-semibold'
+        onClick={()=>{
+if (!userInfo.email) {
+  alert("please sign in")
+  return
+}
+navigate("/dashboard")
+
+        }}>
+        DASHBOARD
+        </button>
         <button onClick={()=>{
           
         if (aboutDiv.current) {

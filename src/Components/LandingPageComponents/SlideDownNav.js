@@ -27,14 +27,26 @@ const navigate = useNavigate()
         } fixed top-0 left-0 w-full  bg-gray-800 text-blue font-poppins bg-white shadow-lg z-40 flex justify-between items-start`} 
       >
         <ul className="px-4 py-8 w-[80%] ">
-          <li className="mb-2 cursor-pointer hover:bg-blue hover:text-white focus:bg-blue focus:text-white rounded-lg" onClick={()=>{
+          <li className="mb-2 cursor-pointer hover:bg-blue hover:text-white focus:bg-blue focus:text-white rounded-lg" 
+          onClick={()=>{
+      
+            if (!userInfo.email) {
+              alert("please sign in")
+              
+              return
+            }
+           
             setNavOpen(false)
+
 
           } 
           }>
-            <a href="/dashboard" className="block py-2 px-4 hover:bg-gray-700 rounded uppercase">
+           {userInfo.email && <a href='/dashboard' className="block py-2 px-4 hover:bg-gray-700 rounded uppercase">
               dashboard
-            </a>
+            </a>}
+           {!userInfo.email && <span  className="block py-2 px-4 hover:bg-gray-700 rounded uppercase">
+              dashboard
+            </span>}
           </li>
           <li className="mb-2 cursor-pointer hover:bg-blue hover:text-white focus:bg-blue focus:text-white rounded-lg" 
           onClick={()=>{
