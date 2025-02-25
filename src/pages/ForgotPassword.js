@@ -33,11 +33,13 @@ const postData = async (e) => {
 }),
     });
 
+    console.log(response);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
 
     const data = await response.json();
+    
     if (data.status) {
         setEmailLoading(false)
         setSuccess(true)
@@ -45,7 +47,7 @@ const postData = async (e) => {
     }
     console.log('Success:', data);
   } catch (error) {
-    alert(error.messagae)
+    alert(error)
     setEmailLoading(false)
     console.error('Error:', error);
   }
