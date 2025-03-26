@@ -25,7 +25,7 @@ else{
         </span>}
  {increaseWidth &&  (  
     <>
-    <span className='text-white' onClick={()=>{
+    {/* <span className='text-white' onClick={()=>{
        const phoneNumber = "13094729020";
     const message = "Hello, I would like to inquire about your services.";
     const url = `https://wa.me/${phoneNumber}`;
@@ -33,7 +33,7 @@ else{
       window.open(url, "_blank")
     }} > 
     <FaWhatsapp />
-    </span>
+    </span> */}
     <span className='text-white' onClick={()=>{
  const email = "Kryptotrade.kt@gmail.com"; // Replace with the recipient's email
     const subject = "Inquiry About Services"; // Subject of the email
